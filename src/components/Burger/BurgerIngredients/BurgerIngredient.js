@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Layout.css";
+import PropTypes from "prop-types";
 
 //STATELESS COMPONENT
 const burgerIngredient = (props) => {
@@ -33,6 +34,9 @@ const burgerIngredient = (props) => {
       ingredient = null;
   }
   return ingredient;
+};
+burgerIngredient.PropTypes = {
+  type: PropTypes.string.isRequired,
 };
 
 export default burgerIngredient;
