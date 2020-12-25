@@ -5,13 +5,12 @@ const orderSummary = (props) => {
   // ingredient to list items
   const ingredientSummary = Object.keys(props.ingredients).map((igKey) => {
     return (
-      <li>
+      <li key={igKey}>
         <span style={{ textTransform: "capitalize" }}>{igKey}</span>:{" "}
         {props.ingredients[igKey]}
       </li>
     );
   });
-
   return (
     <Aux>
       <h3>Your order</h3>
