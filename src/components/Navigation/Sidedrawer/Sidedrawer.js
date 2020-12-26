@@ -6,14 +6,14 @@ import Aux from "../../../hoc/Aux";
 
 const sideDrawer = (props) => {
   // conditions open close
-  let attachedClasses = [classes.sideDrawer, classes.Close];
+  let attachedClasses = [classes.SideDrawer, classes.Close];
   if (props.open) {
-    attachedClasses = [classes.sideDrawer, classes.Open];
+    attachedClasses = [classes.SideDrawer, classes.Open];
   }
   return (
     <Aux>
       <Backdrop show={props.open} clicked={props.closed} />
-      <div className={attachedClasses.join(" ")}>
+      <div className={attachedClasses.join(" ")} onClick={props.closed}>
         <nav>
           <NavigationItems />
         </nav>
