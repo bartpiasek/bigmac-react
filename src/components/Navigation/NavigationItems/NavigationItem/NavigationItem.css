@@ -6,7 +6,7 @@
 }
 
 .NavigationItem a {
-  color: white;
+  color: black;
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
@@ -16,7 +16,7 @@
 .NavigationItem a:hover,
 .NavigationItem a:active,
 .NavigationItem a.active {
-  color: whitesmoke;
+  color: black;
 }
 
 /* media query for desktop version  */
