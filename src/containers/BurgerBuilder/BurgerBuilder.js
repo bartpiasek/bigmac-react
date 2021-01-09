@@ -146,6 +146,7 @@ class BurgerBuilder extends Component {
           />
         </Aux>
       );
+
       orderSummary = (
         <OrderSummary
           ingredients={this.state.ingredients}
