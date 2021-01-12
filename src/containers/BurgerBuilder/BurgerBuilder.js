@@ -89,32 +89,21 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    //   this.setState({ loading: true });
-    //   // alert("Continue!");
-    //   // axios as instance - link
-    //   const order = {
-    //     ingredients: this.state.ingredients,
-    //     price: this.state.totalPrice,
-    //     customer: {
-    //       name: "Bart",
-    //       address: {
-    //         street: "asdf 2",
-    //         zipCode: "102030",
-    //         country: "Poland",
-    //       },
-    //       email: "asdf@gmail.com",
-    //     },
-    //     deliveryMethod: "fastest",
-    //   };
-    //   axios
-    //     .post("/orders.json", order)
-    //     .then((response) => {
-    //       this.setState({ loading: false, purchasing: false });
-    //     })
-    //     .catch((error) => {
-    //       this.setState({ loading: false, purchasing: false });
-    //     });
-    this.props.history.push("/checkout");
+    const queryParams = [];
+
+    for (let i in this.state.ingredients) {
+      queryParams.push(
+        encodeURIComponent(i) +
+          "=" +
+          encodeURIComponent(this.state.ingredients[i])
+      );
+    }
+
+    const queryString = queryParams.join("&");
+    this.props.history.push({
+      pathname: "/checkout",
+      search: "?" + queryString,
+    });
   };
 
   render() {
@@ -152,9 +141,9 @@ class BurgerBuilder extends Component {
       orderSummary = (
         <OrderSummary
           ingredients={this.state.ingredients}
-          purchaseCanceled={this.purchaseCancelHandler}
+          purchaseCancelled={this.purchaseCancelHandler}
           purchaseContinued={this.purchaseContinueHandler}
-          price={this.state.totalPrice}
+          price={this.state.totalPrice.toFixed(2)}
         />
       );
     }
