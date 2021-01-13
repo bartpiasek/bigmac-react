@@ -46,6 +46,7 @@ class Checkout extends Component {
             <ContactData
               ingredients={this.state.ingredients}
               price={this.state.totalPrice}
+              // IN {...props} -
               // orderHandler - this.props.history.push("/"); from ContactData.js
               // redirecting after ORDER
               {...props}
