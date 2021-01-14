@@ -67,12 +67,19 @@ class ContactData extends Component {
     console.log(this.props.ingredients);
 
     this.setState({ loading: true });
+    const formData = {};
+    for (let formElementIdentifier in this.state.orderForm) {
+      formData[formElementIdentifier] = this.state.orderForm[
+        formElementIdentifier
+      ].value;
+    }
     // alert("Continue!");
     // axios as instance - link
     const order = {
       // ingredients, price from Checkout.js (ingredients, totalPrice)
       ingredients: this.props.ingredients,
       price: this.props.price,
+      orderData: formData,
     };
 
     axios
@@ -86,28 +93,32 @@ class ContactData extends Component {
       });
   };
 
+  inputChangedHandler = (event) => {
+    console.log(event.target.value);
+  };
+
   render() {
+    //orderForm to array
+    const formElementsArray = [];
+
+    for (let key in this.state.orderForm) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.orderForm[key],
+      });
+    }
+
     let form = (
       <form>
-        <Input elementType="..." elementConfig="..." value="..." />
-        <Input
-          inputtype="input"
-          type="email"
-          name="email"
-          placeholder="Your email"
-        />
-        <Input
-          inputtype="input"
-          type="text"
-          name="street"
-          placeholder="Your street"
-        />
-        <Input
-          inputtype="input"
-          type="text"
-          name="postal"
-          placeholder="Your postal code"
-        />
+        {formElementsArray.map((formElement) => (
+          <Input
+            key={formElement.id}
+            elementType={formElement.config.elementType}
+            elementConfig={formElement.config.elementConfig}
+            value={formElement.config.value}
+            changed={this.inputChangedHandler}
+          />
+        ))}
         <Button btnType="success" clicked={this.orderHandler}>
           Order
         </Button>
