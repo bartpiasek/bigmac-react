@@ -7,11 +7,57 @@ import Input from "../../../../components/UI/Input/Input";
 
 class ContactData extends Component {
   state = {
-    name: "",
-    email: "",
-    address: {
-      street: "",
-      postalCode: "",
+    orderForm: {
+      name: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Your name",
+        },
+        value: "",
+      },
+      street: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Street",
+        },
+        value: "",
+      },
+      zipCode: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Postal code",
+        },
+        value: "",
+      },
+      country: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Country",
+        },
+        value: "",
+      },
+      email: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Email",
+        },
+        value: "",
+      },
+      deliveryMethod: {
+        elementType: "select",
+        elementConfig: {
+          options: [
+            { value: "fastest", displayValue: "Fastest" },
+            { value: "normal", displayValue: "Normal" },
+          ],
+        },
+        value: "",
+      },
     },
     loading: false,
   };
@@ -27,17 +73,8 @@ class ContactData extends Component {
       // ingredients, price from Checkout.js (ingredients, totalPrice)
       ingredients: this.props.ingredients,
       price: this.props.price,
-      customer: {
-        name: "Bart",
-        address: {
-          street: "asdf 2",
-          zipCode: "102030",
-          country: "Poland",
-        },
-        email: "asdf@gmail.com",
-      },
-      deliveryMethod: "fastest",
     };
+
     axios
       .post("/orders.json", order)
       .then((response) => {
@@ -52,26 +89,21 @@ class ContactData extends Component {
   render() {
     let form = (
       <form>
+        <Input elementType="..." elementConfig="..." value="..." />
         <Input
-          inputType="input"
-          type="text"
-          name="name"
-          placeholder="Your name"
-        />
-        <Input
-          inputType="input"
+          inputtype="input"
           type="email"
           name="email"
           placeholder="Your email"
         />
         <Input
-          inputType="input"
+          inputtype="input"
           type="text"
           name="street"
           placeholder="Your street"
         />
         <Input
-          inputType="input"
+          inputtype="input"
           type="text"
           name="postal"
           placeholder="Your postal code"
