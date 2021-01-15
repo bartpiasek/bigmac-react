@@ -1,7 +1,9 @@
 .Button {
   background-color: transparent;
-  border: none;
-  color: white;
+  border: 1rem;
+  border-color: magenta;
+  border-radius: 8px;
+  color: grey;
   outline: none;
   cursor: pointer;
   font: inherit;
