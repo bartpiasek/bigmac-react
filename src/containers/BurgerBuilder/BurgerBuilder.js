@@ -27,14 +27,14 @@ class BurgerBuilder extends Component {
 
   componentDidMount() {
     console.log(this.props);
-    axios
-      .get("https://bigmac-react-default-rtdb.firebaseio.com/ingredients.json")
-      .then((response) => {
-        this.setState({ ingredients: response.data });
-      })
-      .catch((error) => {
-        this.setState({ error: true });
-      });
+    // axios
+    //   .get("https://bigmac-react-default-rtdb.firebaseio.com/ingredients.json")
+    //   .then((response) => {
+    //     this.setState({ ingredients: response.data });
+    //   })
+    //   .catch((error) => {
+    //     this.setState({ error: true });
+    //   });
   }
 
   updatedPurchaseState(ingredients) {
