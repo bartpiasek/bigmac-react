@@ -8,6 +8,7 @@ const navigationItems = (props) => (
       Bigmac React
     </NavigationItem>
     <NavigationItem link="/orders">Orders</NavigationItem>
+    <NavigationItem link="/auth">Auth</NavigationItem>
   </ul>
 );
 
